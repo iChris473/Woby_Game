@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Woby Games</title>
+    <meta name="description" content="From Playtime to Paytime: $WOBY Makes it Playfully Profitable!">
+    <link rel="icon" href="./logo.PNG">
+    <style>
+        @font-face {
+            font-family: "ColaKind";
+            src: url("./ColaKind.ttf");
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .textC {
+            font-family: ColaKind;
+            font-size: 60px;
+            color: #02a701;
+            text-align: center;
+            margin: 0;
+        }
+
+
+        .glitch {
+            position: relative;
+            font-size: 9vw;
+            /* margin: 70px 200px; */
+            animation: glitch 5s 5s infinite;
+        }
+
+        .glitch::before {
+            content: attr(data-text);
+            position: absolute;
+            text-shadow: -5px 0 magenta;
+            overflow: hidden;
+            animation: noise-1 3s linear infinite alternate-reverse, glitch 1s 3.05s infinite;
+        }
+
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 2px;
+            text-shadow: -5px 0 lightgreen;
+            overflow: hidden;
+            top: 0;
+            animation: noise-2 3s linear infinite alternate-reverse, glitch 3s 3s infinite;
+        }
+
+        @keyframes glitch {
+            1% {
+                transform: rotateX(10deg) skewX(90deg);
+            }
+
+            2% {
+                transform: rotateX(0deg) skewX(0deg);
+            }
+        }
+
+
+        .scanlines {
+            overflow: hidden;
+            mix-blend-mode: difference;
+        }
+
+        .scanlines::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+
+
+            animation: fudge 7s ease-in-out alternate infinite;
+        }
+
+
+        @keyframes fudge {
+            from {
+                transform: translate(0px, 0px);
+            }
+
+            to {
+                transform: translate(0px, 2%);
+            }
+        }
+
+        .glow {
+            @extend .glitch;
+            text-shadow: 0 0 1000px rgb(223, 191, 191);
+            color: transparent;
+            position: absolute;
+            top: 0;
+        }
+
+
+        @keyframes glitch-2 {
+            1% {
+                transform: rotateX(10deg) skewX(70deg);
+            }
+
+            2% {
+                transform: rotateX(0deg) skewX(0deg);
+            }
+        }
+
+        .body {
+            padding: 0;
+            margin: 0;
+            overflow: hidden !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body {
+            overflow: hidden;
+            background: #141e30;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        img {
+            height: 200px;
+            object-fit: contain;
+        }
+
+        @media (max-width: 700px) {
+            img {
+                height: 100px;
+            }
+
+            .textC {
+                font-size: 50px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./logo.PNG">
+    <div class="container body">
+        <div class="glitch textC" data-text="Coming Soon">Coming Soon!</div>
+        <div class="glow">Coming Soon!</div>
+    </div>
+    <div class="scanlines"></div>
+</body>
+
+</html>
